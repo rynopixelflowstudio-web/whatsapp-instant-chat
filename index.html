@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Instant Chat & QR Code Generator | Free Click-to-Chat Tool</title>
+    <meta name="description" content="Instantly create WhatsApp click-to-chat links and downloadable QR codes without saving numbers to your contacts. 100% free, private, and secure.">
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon Mockup -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+</head>
+<body>
+
+    <!-- Gradient Background Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div class="app-container">
+        <!-- Top Ad Slot -->
+        <header class="main-header">
+            <div class="logo">
+                <i class="fab fa-whatsapp icon-glow"></i>
+                <span>WA<span class="highlight">Instant</span></span>
+            </div>
+            <h1 class="tagline">Chat on WhatsApp without saving the number.</h1>
+        </header>
+
+        <!-- Ad Banner: Top -->
+        <div class="ad-slot ad-top">
+            <div class="ad-placeholder">
+                <i class="fa-solid fa-rectangle-ad"></i>
+                <span>Advertisement Area (Leaderboard)</span>
+            </div>
+        </div>
+
+        <main class="tool-grid">
+            <!-- Left Column: Generator Form -->
+            <section class="glass-card form-section">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Link Generator</h2>
+                    <p>Create your direct chat link instantly.</p>
+                </div>
+
+                <form id="waForm" autocomplete="off">
+                    <div class="input-group">
+                        <label for="countrySearch">Select Country</label>
+                        <div class="custom-select-wrapper" id="countrySelectWrapper">
+                            <div class="custom-select-trigger">
+                                <span id="selectedFlag">🇿🇦</span>
+                                <span id="selectedCountryName">South Africa (+27)</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="custom-options-container">
+                                <div class="search-box">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" id="countrySearch" placeholder="Search country...">
+                                </div>
+                                <ul class="options-list" id="countryOptions">
+                                    <!-- Dynamically populated by JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="phoneNumber" placeholder="82 123 4567" required>
+                        </div>
+                        <span class="input-tip">Tip: No need to type the country code again.</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="customMessage">Custom Message (Optional)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-message"></i>
+                            <textarea id="customMessage" rows="3" placeholder="Hi, I saw your listing and I'm interested!"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Right Column: Results View -->
+            <section class="glass-card results-section empty-state" id="resultsCard">
+                <div class="empty-indicator">
+                    <i class="fa-regular fa-comments pulse"></i>
+                    <h3>Ready to Generate</h3>
+                    <p>Enter a phone number to generate your link and QR code.</p>
+                </div>
+
+                <div class="active-results">
+                    <div class="result-group">
+                        <label>Your Direct Link</label>
+                        <div class="link-preview-box">
+                            <input type="text" id="generatedLink" readonly>
+                            <button id="btnCopy" class="btn-icon-action" title="Copy to Clipboard">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="action-row">
+                        <a href="#" id="btnLaunch" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-whatsapp"></i> Open Direct Chat
+                        </a>
+                    </div>
+
+                    <div class="qr-divider">
+                        <span>QR Code Generator</span>
+                    </div>
+
+                    <div class="qr-output-wrapper">
+                        <div class="canvas-holder">
+                            <canvas id="qrCanvas"></canvas>
+                        </div>
+                        <button id="btnDownloadQR" class="btn btn-secondary">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> Download QR Code
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Ad Banner: Mid / In-Feed -->
+        <div class="ad-slot ad-mid">
+            <div class="ad-placeholder">
+                <i class="fa-solid fa-rectangle-ad"></i>
+                <span>Advertisement Area (In-Feed Banner)</span>
+            </div>
+        </div>
+
+        <!-- SEO Rich FAQ Content Section -->
+        <article class="seo-article">
+            <header class="article-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about the Direct WhatsApp utility.</p>
+            </header>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3><i class="fa-solid fa-circle-question"></i> What is a WA.Link?</h3>
+                    <p>A WA.link is a shortened WhatsApp URL (using the official <code>wa.me</code> system) that instantly initiates a chat when clicked. It allows customers or clients to message you without typing your number.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Is my information safe?</h3>
+                    <p>Absolutely. This tool runs 100% in your browser. We do not upload, store, or share your phone numbers or messages with any external servers. Completely private.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fa-solid fa-qrcode"></i> How do I use the QR code?</h3>
+                    <p>Simply generate the link and download the QR code image. You can print it on business cards, flyers, storefront menus, or add it to your website. Anyone who scans it will be linked directly to your chat.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fa-solid fa-wallet"></i> Is this tool free to use?</h3>
+                    <p>Yes! Our WhatsApp link and QR generator is entirely free, forever. We sustain the site with non-intrusive visual advertisements to keep the servers running.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- Footer Section -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p>&copy; 2026 WAInstant. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="toast">Copied to clipboard!</div>
+
+    <!-- External CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
