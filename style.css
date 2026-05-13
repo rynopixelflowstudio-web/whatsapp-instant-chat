@@ -766,3 +766,103 @@ canvas {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
 }
+
+/* 🚀 Synergistic Promo Banner Styles
+   ========================================================================== */
+.promo-card {
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.05) 0%, rgba(0, 198, 255, 0.01) 100%);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    margin-top: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.05);
+    animation: bannerFadeIn 0.5s ease-out;
+}
+
+@keyframes bannerFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.promo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-cyan), transparent);
+}
+
+.promo-card:hover {
+    border-color: rgba(0, 242, 254, 0.4);
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(0, 198, 255, 0.02) 100%);
+    box-shadow: 0 6px 25px rgba(0, 242, 254, 0.1);
+    transform: translateY(-2px);
+}
+
+.promo-badge {
+    display: inline-block;
+    background: rgba(0, 242, 254, 0.1);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    color: var(--accent-cyan);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+}
+
+.promo-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.promo-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.1rem;
+}
+
+.promo-desc strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.promo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.promo-btn:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+    border-color: #fff;
+}
+
+.promo-btn i {
+    font-size: 0.75rem;
+}
