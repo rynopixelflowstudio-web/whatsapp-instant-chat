@@ -782,6 +782,22 @@ canvas {
     animation: bannerFadeIn 0.5s ease-out;
 }
 
+/* 🚫 ABSOLUTE GOOGLE AUTO-ADS LOCKDOWN (STOPS FAQ INJECTIONS)
+   ========================================================================== */
+.faq-grid ins.adsbygoogle,
+.faq-grid .adsbygoogle,
+.faq-grid iframe[id^="aswift"],
+.faq-grid google-adsense-container,
+.tool-grid ins.adsbygoogle:not(.ad-slot ins.adsbygoogle),
+.main-header ins.adsbygoogle {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0px !important;
+    width: 0px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
 @keyframes bannerFadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
